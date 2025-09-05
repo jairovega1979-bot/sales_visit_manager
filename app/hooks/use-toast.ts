@@ -179,7 +179,7 @@ function useToast() {
         listeners.splice(index, 1);
       }
     };
-  }, [state]);
+  }, []);
 
   return {
     ...state,
@@ -188,4 +188,15 @@ function useToast() {
   };
 }
 
-export { useToast, toast };
+const __testing = {
+  getListeners: () => listeners,
+  reset: () => {
+    memoryState = { toasts: [] };
+    listeners.splice(0, listeners.length);
+    toastTimeouts.forEach((timeout) => clearTimeout(timeout));
+    toastTimeouts.clear();
+  },
+  getState: () => memoryState,
+};
+
+export { useToast, toast, TOAST_REMOVE_DELAY, __testing };
