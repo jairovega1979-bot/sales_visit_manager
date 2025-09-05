@@ -17,7 +17,6 @@ export type AppointmentPriority = 'LOW' | 'MEDIUM' | 'HIGH' | 'URGENT';
 export type ProspectSource = 'WEB_SEARCH' | 'DIRECTORY' | 'REFERRAL' | 'SOCIAL_MEDIA' | 'EVENT';
 export type ProspectPriority = 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
 export type IntentSignal = 'JOB_POSTING' | 'FUNDING' | 'EXPANSION' | 'TECHNOLOGY_ADOPTION' | 'COMPETITOR_MENTION' | 'INDUSTRY_NEWS';
-
 // Interfaces principales
 export interface MockUser {
   id: string;
