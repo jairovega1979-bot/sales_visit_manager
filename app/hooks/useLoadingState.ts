@@ -31,7 +31,7 @@ export function useLoadingState() {
 
       const result = await asyncFn();
       
-      // Note: toast.dismiss will be handled by react-hot-toast automatically
+      // Note: toast.dismiss will be handled automatically by the toast library
       
       if (options?.successMessage) {
         toast(options.successMessage, 'success');
