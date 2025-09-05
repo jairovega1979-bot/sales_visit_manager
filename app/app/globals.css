@@ -1,0 +1,306 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Skeleton shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  /* Improve touch targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent zoom on input focus */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+  
+  /* Better scrolling */
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  
+  /* Text truncation helpers */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Custom animations for Priority Calls Module */
+@keyframes pulse-red {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
+}
+
+.animate-pulse-red {
+  animation: pulse-red 2s ease-in-out infinite;
+}
+
+/* birdlogyc Brand Colors - Extracted from logo */
+@layer base {
+  :root {
+    /* Background colors */
+    --background: 0 0% 100%;
+    --foreground: 208 88% 12%;
+    
+    /* birdlogyc Brand Colors */
+    --brand-navy: 208 88% 12%;      /* Dark navy from logo hexagon */
+    --brand-blue: 208 72% 35%;      /* Medium blue from bird */
+    --brand-light-blue: 208 65% 55%; /* Lighter blue accent */
+    --brand-sky: 208 40% 85%;       /* Very light blue for backgrounds */
+    
+    --card: 0 0% 100%;
+    --card-foreground: 208 88% 12%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 208 88% 12%;
+ 
+    --primary: 208 88% 12%;          /* Navy blue primary */
+    --primary-foreground: 208 40% 98%;
+ 
+    --secondary: 208 40% 96%;        /* Light blue secondary */
+    --secondary-foreground: 208 88% 12%;
+ 
+    --muted: 208 40% 96%;
+    --muted-foreground: 208 20% 45%;
+ 
+    --accent: 208 72% 35%;           /* Brand blue accent */
+    --accent-foreground: 208 40% 98%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 208 30% 88%;
+    --input: 208 30% 88%;
+    --ring: 208 88% 12%;
+ 
+    --radius: 0.75rem;
+  }
+ 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+ 
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+ 
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Brand Components */
+@layer components {
+  /* Brand Colors */
+  .bg-brand-navy {
+    background-color: hsl(var(--brand-navy));
+  }
+  .bg-brand-blue {
+    background-color: hsl(var(--brand-blue));
+  }
+  .bg-brand-light-blue {
+    background-color: hsl(var(--brand-light-blue));
+  }
+  .bg-brand-sky {
+    background-color: hsl(var(--brand-sky));
+  }
+  
+  .text-brand-navy {
+    color: hsl(var(--brand-navy));
+  }
+  .text-brand-blue {
+    color: hsl(var(--brand-blue));
+  }
+  .text-brand-light-blue {
+    color: hsl(var(--brand-light-blue));
+  }
+
+  /* Logo Background Components */
+  .bg-logo-watermark {
+    position: relative;
+  }
+  
+  .bg-logo-watermark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/birdlogyc-logo.png');
+    background-size: 200px 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .bg-logo-large {
+    position: relative;
+  }
+  
+  .bg-logo-large::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    transform: translate(-50%, -50%);
+    background-image: url('/birdlogyc-logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .bg-logo-corner {
+    position: relative;
+  }
+  
+  .bg-logo-corner::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+    background-image: url('/birdlogyc-logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: -1;
+    transform: rotate(15deg);
+  }
+
+  /* Gradient backgrounds with brand colors */
+  .bg-brand-gradient {
+    background: linear-gradient(135deg, hsl(var(--brand-sky)), hsl(var(--background)));
+  }
+  
+  .bg-brand-gradient-dark {
+    background: linear-gradient(135deg, hsl(var(--brand-navy)), hsl(var(--brand-blue)));
+  }
+  
+  .bg-brand-gradient-soft {
+    background: linear-gradient(180deg, hsl(var(--brand-sky)) 0%, hsl(var(--background)) 100%);
+  }
+
+  /* Hexagonal decorative elements inspired by logo */
+  .hexagon-decoration {
+    position: relative;
+  }
+  
+  .hexagon-decoration::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 52px;
+    background: hsl(var(--brand-sky));
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    opacity: 0.3;
+  }
+  
+  .clip-path-hexagon {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  
+  /* Floating animation for decorative elements */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Subtle pulse for brand elements */
+  @keyframes brand-pulse {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.05);
+    }
+  }
+  
+  .animate-brand-pulse {
+    animation: brand-pulse 4s ease-in-out infinite;
+  }
+}

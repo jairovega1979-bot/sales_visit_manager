@@ -1,0 +1,8 @@
+
+# Redirects para SPA en Netlify
+/*    /index.html   200
+
+# Redirects específicos para rutas de la app
+/dashboard/*  /dashboard/index.html  200
+/auth/*       /auth/index.html       200
+/api/*        /.netlify/functions/:splat  200
